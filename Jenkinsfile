@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git 'https://github.com/pedroboga/inf335-trabalho5'
+                git branch: 'main', url: 'https://github.com/pedroboga/inf335-trabalho5'
                 sh "mvn -Fmaven.test.failure.ignore=true clean package"
             }
             
