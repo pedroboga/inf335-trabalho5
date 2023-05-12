@@ -1,3 +1,5 @@
+package br.unicamp.ic.inf335.beans;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
