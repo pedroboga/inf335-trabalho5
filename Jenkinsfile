@@ -10,7 +10,9 @@ pipeline {
             steps {
                 git branch: 'main', url: 'https://github.com/pedroboga/inf335-trabalho5'
                 //sh "mvn -Fmaven.test.failure.ignore=true clean package"
-                sh "mvn clean package -Dmaven.test.failure.ignore=true"
+                dir('src-trabalho4') {
+                    sh "mvn clean package -Dmaven.test.failure.ignore=true"
+                }
             }
             
             post {
