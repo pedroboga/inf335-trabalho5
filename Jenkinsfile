@@ -1,25 +1,23 @@
 pipeline {
     agent any
+    
+    tools {
+        maven "M3"
+    }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout([$class: 'GitSCM', 
-                          branches: [[name: '*/main']],
-                          userRemoteConfigs: [[url: 'https://github.com/pedroboga/inf335-trabalho5']]])
-            }
-        }
-
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                git 'https://github.com/pedroboga/inf335-trabalho5'
+                sh "mvn -Fmaven.test.failure.ignore=true clean package"
             }
+            
+            post {
+        success {
+            junit '**/target/surefire-reports/TEST-*.xml'
+            archiveArtifacts 'targe/*.jar'
         }
-
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
+    }
         }
     }
 }
