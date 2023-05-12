@@ -21,25 +21,5 @@ pipeline {
                 sh 'mvn test'
             }
         }
-
-        stage('Deploy') {
-            steps {
-                // Add deployment steps here, if applicable
-            }
-        }
-    }
-
-    post {
-        always {
-            // Clean up steps, if any
-        }
-
-        success {
-            // Actions to perform when the pipeline is successful
-        }
-
-        failure {
-            // Actions to perform when the pipeline fails
-        }
     }
 }
